@@ -1,0 +1,6 @@
+.custom-modal {
+  max-width: 90%;
+  /* Ancho máximo del modal */
+  margin-top: 10vh;
+  /* Margen superior para centrarlo verticalmente */
+}

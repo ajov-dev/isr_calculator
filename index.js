@@ -1,6 +1,7 @@
 function runApp() {
   validarFormulario();
 }
+
 runApp();
 function meRound2Decimals(num) {
   return num.toFixed(2);
@@ -19,15 +20,11 @@ function validarFormulario() {
       main();
     }
   });
-
 }
 
 function main() {
-
   let salarioMensual = parseFloat(document.getElementById("salario_mensual").value);
   let salarioAnual = salarioMensual * 13;
-  // redondear a dos decimales
-
   let monto_base = 0;
   let base_imponible = 0;
   let impuesto = 0;
@@ -35,7 +32,6 @@ function main() {
   let ISR_mensual = 0;
   let tittle = "";
   let content = {};
-
   if (salarioAnual < 11000) {
     tittle = "No paga ISR";
   } else if (salarioAnual < 50000) {
@@ -52,13 +48,10 @@ function main() {
     base_imponible = salarioAnual - monto_base;
     ISR_anual = base_imponible * impuesto;
     ISR_mensual = ISR_anual / 13;
-    // ARMA UN objeto CON LOS DATOS
   }
-  // Muestra un modal de Bootstrap que informa
   content = {
     "Salario mensual": "B/. " + meRound2Decimals(salarioMensual),
     "Salario Anual": "B/. " + meRound2Decimals(salarioAnual),
-    "Monto Base": "B/. " + meRound2Decimals(monto_base),
     "Base Imponible": "B/. " + meRound2Decimals(base_imponible),
     "Impuesto Aplicado": meRound2Decimals(impuesto) + "%",
     "ISR Anual": "B/. " + meRound2Decimals(ISR_anual),
@@ -70,7 +63,7 @@ function main() {
 function showBootstrapAlertModal(title, content) {
   // Crea el modal de Bootstrap
   let modal = document.createElement("div");
-  modal.classList.add("modal", "fade");
+  modal.classList.add("modal", "fade", "d-flex", "align-items-center", "justify-content-center", "custom-modal");
   modal.id = "bootstrapModal";
 
   let modalDialog = document.createElement("div");
@@ -115,7 +108,8 @@ function showBootstrapAlertModal(title, content) {
 function showBootstrapTableModal(title, data) {
   // Crea el modal de Bootstrap
   let modal = document.createElement("div");
-  modal.classList.add("modal", "fade");
+  modal.classList.add("modal", "fade", "d-flex", "align-items-center", "justify-content-center", "custom-modal");
+
   modal.id = "bootstrapModal";
 
   let modalDialog = document.createElement("div");
@@ -149,6 +143,7 @@ function showBootstrapTableModal(title, data) {
   table.classList.add("table");
 
   let tbody = document.createElement("tbody");
+  
 
   for (const key in data) {
     let row = document.createElement("tr");
