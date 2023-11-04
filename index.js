@@ -15,6 +15,11 @@ function validarFormulario() {
       // verifica que los campos esten llenos, si no lo estan, muestra un mensaje de error
       let correo_Usuario = document.getElementById("correo_usuario").value;
       let salario_Mensual = document.getElementById("salario_mensual").value;
+      document
+        .getElementById("btn-calcular")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+        });
       // el salario mensual y el correo son campos obligatorios.
       if (salario_Mensual == "" || correo_Usuario == "") {
         showBootstrapAlertModal("Error", "Todos los campos son obligatorios");
@@ -112,7 +117,12 @@ function showBootstrapAlertModal(title, content) {
 
   // Agrega el modal al documento
   document.body.appendChild(modal);
-
+  closeButton.addEventListener("click", function (event) {
+    // recarga la pagina
+    location.reload();
+    let btnCalcular = document.getElementById("btn-calcular");
+    btnCalcular.disabled = false;
+  });
   // Inicializa el modal de Bootstrap
   new bootstrap.Modal(modal).show();
 }
