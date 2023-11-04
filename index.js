@@ -8,22 +8,26 @@ function meRound2Decimals(num) {
 }
 
 function validarFormulario() {
-  document.getElementById("miFormulario").addEventListener("submit", function (event) {
-    event.preventDefault();
-    // verifica que los campos esten llenos, si no lo estan, muestra un mensaje de error
-    let correo_Usuario = document.getElementById("correo_usuario").value;
-    let salario_Mensual = document.getElementById("salario_mensual").value;
-    // el salario mensual y el correo son campos obligatorios.
-    if (salario_Mensual == "" || correo_Usuario == "") {
-      showBootstrapAlertModal("Error", "Todos los campos son obligatorios");
-    } else {
-      main();
-    }
-  });
+  document
+    .getElementById("miFormulario")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      // verifica que los campos esten llenos, si no lo estan, muestra un mensaje de error
+      let correo_Usuario = document.getElementById("correo_usuario").value;
+      let salario_Mensual = document.getElementById("salario_mensual").value;
+      // el salario mensual y el correo son campos obligatorios.
+      if (salario_Mensual == "" || correo_Usuario == "") {
+        showBootstrapAlertModal("Error", "Todos los campos son obligatorios");
+      } else {
+        main();
+      }
+    });
 }
 
 function main() {
-  let salarioMensual = parseFloat(document.getElementById("salario_mensual").value);
+  let salarioMensual = parseFloat(
+    document.getElementById("salario_mensual").value
+  );
   let salarioAnual = salarioMensual * 13;
   let monto_base = 0;
   let base_imponible = 0;
@@ -63,7 +67,14 @@ function main() {
 function showBootstrapAlertModal(title, content) {
   // Crea el modal de Bootstrap
   let modal = document.createElement("div");
-  modal.classList.add("modal", "fade", "d-flex", "align-items-center", "justify-content-center", "custom-modal");
+  modal.classList.add(
+    "modal",
+    "fade",
+    "d-flex",
+    "align-items-center",
+    "justify-content-center",
+    "custom-modal"
+  );
   modal.id = "bootstrapModal";
 
   let modalDialog = document.createElement("div");
@@ -108,7 +119,14 @@ function showBootstrapAlertModal(title, content) {
 function showBootstrapTableModal(title, data) {
   // Crea el modal de Bootstrap
   let modal = document.createElement("div");
-  modal.classList.add("modal", "fade", "d-flex", "align-items-center", "justify-content-center", "custom-modal");
+  modal.classList.add(
+    "modal",
+    "fade",
+    "d-flex",
+    "align-items-center",
+    "justify-content-center",
+    "custom-modal"
+  );
 
   modal.id = "bootstrapModal";
 
@@ -131,6 +149,11 @@ function showBootstrapTableModal(title, data) {
   closeButton.setAttribute("data-bs-dismiss", "modal");
   closeButton.setAttribute("aria-label", "Close");
 
+  closeButton.addEventListener("click", function (event) {
+    // recarga la pagina
+    location.reload();
+  });
+
   modalHeader.appendChild(modalTitle);
   modalHeader.appendChild(closeButton);
 
@@ -143,7 +166,6 @@ function showBootstrapTableModal(title, data) {
   table.classList.add("table");
 
   let tbody = document.createElement("tbody");
-  
 
   for (const key in data) {
     let row = document.createElement("tr");
